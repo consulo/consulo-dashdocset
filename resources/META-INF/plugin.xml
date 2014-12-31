@@ -4,6 +4,8 @@
 	<version>SNAPSHOT</version>
 	<vendor>must-be.org</vendor>
 
+	<depends config-file="java-impl.xml" optional="true">org.consulo.java</depends>
+
 	<actions>
 		<action id="SearchInDashDoc" class="org.mustbe.consulo.dashdocset.action.SearchInDashDocAction">
 			<add-to-group group-id="EditorPopupMenu"/>
