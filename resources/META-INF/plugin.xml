@@ -1,0 +1,6 @@
+<idea-plugin>
+	<id>org.mustbe.consulo.dashdocset</id>
+	<name>Dash Integration</name>
+	<version>SNAPSHOT</version>
+	<vendor>must-be.org</vendor>
+</idea-plugin>
