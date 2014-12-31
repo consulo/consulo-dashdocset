@@ -16,10 +16,13 @@
 
 package org.mustbe.consulo.dashdocset;
 
+import org.consulo.lombok.annotations.Bundle;
+
 /**
  * @author VISTALL
  * @since 31.12.14
  */
-public interface DashKeywordProvider
+@Bundle
+public class DashBundle
 {
 }

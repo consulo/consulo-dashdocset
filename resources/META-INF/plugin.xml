@@ -3,4 +3,26 @@
 	<name>Dash Integration</name>
 	<version>SNAPSHOT</version>
 	<vendor>must-be.org</vendor>
+
+	<actions>
+		<action id="SearchInDashDoc" class="org.mustbe.consulo.dashdocset.action.SearchInDashDocAction">
+			<add-to-group group-id="EditorPopupMenu"/>
+		</action>
+	</actions>
+
+	<extensionPoints>
+		<extensionPoint name="moduleExtensionMapping" beanClass="org.mustbe.consulo.dashdocset.moduleExtension.ModuleExtensionMappingEP"/>
+
+		<extensionPoint name="keywordProvider" beanClass="com.intellij.lang.LanguageExtensionPoint" >
+			<with attribute="implementationClass" implements="org.mustbe.consulo.dashdocset.DashKeywordProvider"/>
+		</extensionPoint>
+	</extensionPoints>
+
+	<extensions defaultExtensionNs="org.mustbe.consulo.dashdocset">
+		<keywordProvider language="" implementationClass="org.mustbe.consulo.dashdocset.ModuleExtensionDashKeywordProvider" />
+
+		<moduleExtensionMapping language="C#" moduleExtensionId="mono-dotnet" keyword="mono" />
+		<moduleExtensionMapping language="C#" moduleExtensionId="microsoft-dotnet" keyword="dotnet" />
+		<moduleExtensionMapping language="C#" moduleExtensionId="unity3d" keyword="unity3d" />
+	</extensions>
 </idea-plugin>
