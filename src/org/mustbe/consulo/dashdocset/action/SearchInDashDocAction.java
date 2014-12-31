@@ -21,6 +21,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.consulo.lombok.annotations.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.mustbe.consulo.dashdocset.DashBundle;
 import org.mustbe.consulo.dashdocset.DashKeywordProvider;
@@ -34,11 +35,14 @@ import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.SelectionModel;
+import com.intellij.openapi.progress.ProgressIndicator;
+import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.util.Pair;
 import com.intellij.psi.PsiComment;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.util.ArrayUtil;
+import lombok.val;
 
 /**
  * @author VISTALL
@@ -57,20 +61,28 @@ public class SearchInDashDocAction extends AnAction
 	@Override
 	public void actionPerformed(AnActionEvent anActionEvent)
 	{
-		Pair<String, String[]> queryInfo = findQueryInfo(anActionEvent);
+		val queryInfo = findQueryInfo(anActionEvent);
 		if(queryInfo == null)
 		{
 			return;
 		}
 
-		try
+		final DashProvider provider = DashProvider.getProvider();
+		new Task.Modal(anActionEvent.getProject(), DashBundle.message("action.searching.in.docset", queryInfo.getFirst(), provider.name()), false)
 		{
-			DashProvider.getProvider().open(queryInfo.getSecond(), queryInfo.getFirst());
-		}
-		catch(Exception e)
-		{
-			LOGGER.warn(e);
-		}
+			@Override
+			public void run(@NotNull ProgressIndicator indicator)
+			{
+				try
+				{
+					provider.open(queryInfo.getSecond(), queryInfo.getFirst());
+				}
+				catch(Exception e)
+				{
+					LOGGER.warn(e);
+				}
+			}
+		}.queue();
 	}
 
 	@Nullable
