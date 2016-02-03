@@ -25,6 +25,6 @@
 
 		<moduleExtensionMapping language="C#" moduleExtensionId="mono-dotnet" keyword="mono" />
 		<moduleExtensionMapping language="C#" moduleExtensionId="microsoft-dotnet" keyword="dotnet" />
-		<moduleExtensionMapping language="C#" moduleExtensionId="unity3d" keyword="unity3d" />
+		<moduleExtensionMapping language="C#" moduleExtensionId="unity3d-csharp-child" keyword="unity3d" />
 	</extensions>
 </idea-plugin>
