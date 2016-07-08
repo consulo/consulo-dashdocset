@@ -16,10 +16,10 @@
 
 package org.mustbe.consulo.dashdocset;
 
-import org.consulo.lombok.annotations.ArrayFactoryFields;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.Language;
 import com.intellij.psi.PsiFile;
+import consulo.lombok.annotations.ArrayFactoryFields;
 
 /**
  * @author VISTALL
