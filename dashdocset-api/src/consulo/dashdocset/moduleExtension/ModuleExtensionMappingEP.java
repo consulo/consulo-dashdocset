@@ -14,20 +14,23 @@
  * limitations under the License.
  */
 
-package org.mustbe.consulo.dashdocset;
+package consulo.dashdocset.moduleExtension;
 
-import org.jetbrains.annotations.NotNull;
-import com.intellij.lang.Language;
-import com.intellij.psi.PsiFile;
-import consulo.lombok.annotations.ArrayFactoryFields;
+import com.intellij.openapi.extensions.AbstractExtensionPointBean;
+import com.intellij.util.xmlb.annotations.Attribute;
 
 /**
  * @author VISTALL
  * @since 31.12.14
  */
-@ArrayFactoryFields
-public interface DashKeywordProvider
+public class ModuleExtensionMappingEP extends AbstractExtensionPointBean
 {
-	@NotNull
-	String[] findKeywords(@NotNull Language language, @NotNull PsiFile psiFile);
+	@Attribute("language")
+	public String language;
+
+	@Attribute("moduleExtensionId")
+	public String moduleExtensionId;
+
+	@Attribute("keyword")
+	public String keyword;
 }

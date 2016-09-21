@@ -1,7 +1,7 @@
-package org.mustbe.consulo.dashdocset.java;
+package consulo.dashdocset.java;
 
 import org.jetbrains.annotations.NotNull;
-import org.mustbe.consulo.dashdocset.DashKeywordProvider;
+import consulo.dashdocset.DashKeywordProvider;
 import com.intellij.lang.Language;
 import com.intellij.openapi.projectRoots.JavaSdkVersion;
 import com.intellij.openapi.projectRoots.JavaSdkVersionUtil;

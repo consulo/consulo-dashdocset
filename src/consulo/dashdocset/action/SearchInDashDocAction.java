@@ -14,19 +14,16 @@
  * limitations under the License.
  */
 
-package org.mustbe.consulo.dashdocset.action;
+package consulo.dashdocset.action;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import consulo.lombok.annotations.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.mustbe.consulo.dashdocset.DashBundle;
-import org.mustbe.consulo.dashdocset.DashKeywordProvider;
-import org.mustbe.consulo.dashdocset.DashKeywordProviders;
-import org.mustbe.consulo.dashdocset.DashProvider;
+import consulo.dashdocset.DashBundle;
+import consulo.dashdocset.DashProvider;
 import com.intellij.lang.Language;
 import com.intellij.lang.injection.InjectedLanguageManager;
 import com.intellij.openapi.actionSystem.AnAction;
@@ -42,6 +39,9 @@ import com.intellij.psi.PsiComment;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.util.ArrayUtil;
+import consulo.dashdocset.DashKeywordProvider;
+import consulo.dashdocset.DashKeywordProviders;
+import consulo.lombok.annotations.Logger;
 import lombok.val;
 
 /**

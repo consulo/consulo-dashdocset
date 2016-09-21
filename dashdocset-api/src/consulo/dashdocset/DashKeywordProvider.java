@@ -14,15 +14,20 @@
  * limitations under the License.
  */
 
-package org.mustbe.consulo.dashdocset;
+package consulo.dashdocset;
 
-import consulo.lombok.annotations.Bundle;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.lang.Language;
+import com.intellij.psi.PsiFile;
+import consulo.lombok.annotations.ArrayFactoryFields;
 
 /**
  * @author VISTALL
  * @since 31.12.14
  */
-@Bundle
-public class DashBundle
+@ArrayFactoryFields
+public interface DashKeywordProvider
 {
+	@NotNull
+	String[] findKeywords(@NotNull Language language, @NotNull PsiFile psiFile);
 }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.mustbe.consulo.dashdocset;
+package consulo.dashdocset;
 
 import java.awt.Desktop;
 import java.net.URI;

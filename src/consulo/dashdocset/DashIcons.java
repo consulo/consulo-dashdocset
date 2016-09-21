@@ -14,23 +14,19 @@
  * limitations under the License.
  */
 
-package org.mustbe.consulo.dashdocset.moduleExtension;
+package consulo.dashdocset;
 
-import com.intellij.openapi.extensions.AbstractExtensionPointBean;
-import com.intellij.util.xmlb.annotations.Attribute;
+import javax.swing.Icon;
+
+import com.intellij.openapi.util.IconLoader;
 
 /**
  * @author VISTALL
  * @since 31.12.14
  */
-public class ModuleExtensionMappingEP extends AbstractExtensionPointBean
+public interface DashIcons
 {
-	@Attribute("language")
-	public String language;
-
-	@Attribute("moduleExtensionId")
-	public String moduleExtensionId;
-
-	@Attribute("keyword")
-	public String keyword;
+	Icon Dash = IconLoader.findIcon("/icons/dash.png");
+	Icon Velocity = IconLoader.findIcon("/icons/velocity.png");
+	Icon Zeal = IconLoader.findIcon("/icons/zeal.png");
 }

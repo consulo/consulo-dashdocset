@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.mustbe.consulo.dashdocset;
+package consulo.dashdocset;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ public class DashKeywordProviders extends LanguageExtension<DashKeywordProvider>
 
 	public DashKeywordProviders()
 	{
-		super("org.mustbe.consulo.dashdocset.keywordProvider");
+		super("consulo.dashdocset.keywordProvider");
 	}
 
 	@NotNull

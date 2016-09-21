@@ -14,19 +14,15 @@
  * limitations under the License.
  */
 
-package org.mustbe.consulo.dashdocset;
+package consulo.dashdocset;
 
-import javax.swing.Icon;
-
-import com.intellij.openapi.util.IconLoader;
+import consulo.lombok.annotations.Bundle;
 
 /**
  * @author VISTALL
  * @since 31.12.14
  */
-public interface DashIcons
+@Bundle
+public class DashBundle
 {
-	Icon Dash = IconLoader.findIcon("/icons/dash.png");
-	Icon Velocity = IconLoader.findIcon("/icons/velocity.png");
-	Icon Zeal = IconLoader.findIcon("/icons/zeal.png");
 }

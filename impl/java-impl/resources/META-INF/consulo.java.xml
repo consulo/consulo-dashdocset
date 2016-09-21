@@ -15,7 +15,7 @@
   -->
 
 <idea-plugin>
-	<extensions defaultExtensionNs="org.mustbe.consulo.dashdocset">
-		<keywordProvider language="JAVA" implementationClass="org.mustbe.consulo.dashdocset.java.JavaDashKeywordProvider" />
+	<extensions defaultExtensionNs="consulo.dashdocset">
+		<keywordProvider language="JAVA" implementationClass="consulo.dashdocset.java.JavaDashKeywordProvider" />
 	</extensions>
 </idea-plugin>

@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.mustbe.consulo.dashdocset;
+package consulo.dashdocset;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
-import org.mustbe.consulo.dashdocset.moduleExtension.ModuleExtensionMappingEP;
+import consulo.dashdocset.moduleExtension.ModuleExtensionMappingEP;
 import com.intellij.lang.Language;
 import com.intellij.openapi.extensions.ExtensionPointName;
 import com.intellij.openapi.module.Module;
@@ -37,8 +37,7 @@ import consulo.module.extension.ModuleExtension;
  */
 public class ModuleExtensionDashKeywordProvider implements DashKeywordProvider
 {
-	private static final ExtensionPointName<ModuleExtensionMappingEP> EP_NAME = ExtensionPointName.create(
-			"org.mustbe.consulo.dashdocset.moduleExtensionMapping");
+	private static final ExtensionPointName<ModuleExtensionMappingEP> EP_NAME = ExtensionPointName.create("consulo.dashdocset.moduleExtensionMapping");
 
 	@NotNull
 	@Override
