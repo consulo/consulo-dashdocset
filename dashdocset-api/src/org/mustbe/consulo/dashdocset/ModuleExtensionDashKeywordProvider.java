@@ -19,7 +19,6 @@ package org.mustbe.consulo.dashdocset;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.consulo.module.extension.ModuleExtension;
 import org.jetbrains.annotations.NotNull;
 import org.mustbe.consulo.dashdocset.moduleExtension.ModuleExtensionMappingEP;
 import com.intellij.lang.Language;
@@ -30,6 +29,7 @@ import com.intellij.openapi.util.Comparing;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.psi.PsiFile;
 import com.intellij.util.ArrayUtil;
+import consulo.module.extension.ModuleExtension;
 
 /**
  * @author VISTALL

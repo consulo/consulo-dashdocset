@@ -4,7 +4,7 @@
 	<version>SNAPSHOT</version>
 	<vendor>must-be.org</vendor>
 
-	<depends config-file="java-impl.xml" optional="true">org.consulo.java</depends>
+	<depends config-file="consulo.java.xml" optional="true">consulo.java</depends>
 
 	<actions>
 		<action id="SearchInDashDoc" class="org.mustbe.consulo.dashdocset.action.SearchInDashDocAction">
