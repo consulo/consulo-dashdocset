@@ -22,14 +22,13 @@ import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import consulo.dashdocset.DashBundle;
-import consulo.dashdocset.DashProvider;
 import com.intellij.lang.Language;
 import com.intellij.lang.injection.InjectedLanguageManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.Presentation;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.SelectionModel;
 import com.intellij.openapi.progress.ProgressIndicator;
@@ -39,18 +38,19 @@ import com.intellij.psi.PsiComment;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.util.ArrayUtil;
+import consulo.dashdocset.DashBundle;
 import consulo.dashdocset.DashKeywordProvider;
 import consulo.dashdocset.DashKeywordProviders;
-import consulo.lombok.annotations.Logger;
-import lombok.val;
+import consulo.dashdocset.DashProvider;
 
 /**
  * @author VISTALL
  * @since 31.12.14
  */
-@Logger
 public class SearchInDashDocAction extends AnAction
 {
+	private static final Logger LOGGER = Logger.getInstance(SearchInDashDocAction.class);
+
 	public SearchInDashDocAction()
 	{
 		DashProvider provider = DashProvider.getProvider();
@@ -61,7 +61,7 @@ public class SearchInDashDocAction extends AnAction
 	@Override
 	public void actionPerformed(AnActionEvent anActionEvent)
 	{
-		val queryInfo = findQueryInfo(anActionEvent);
+		Pair<String, String[]> queryInfo = findQueryInfo(anActionEvent);
 		if(queryInfo == null)
 		{
 			return;

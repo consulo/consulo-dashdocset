@@ -16,13 +16,29 @@
 
 package consulo.dashdocset;
 
-import consulo.lombok.annotations.Bundle;
+import org.jetbrains.annotations.PropertyKey;
+import com.intellij.AbstractBundle;
 
 /**
  * @author VISTALL
  * @since 31.12.14
  */
-@Bundle
-public class DashBundle
+public class DashBundle extends AbstractBundle
 {
+	private static final DashBundle ourInstance = new DashBundle();
+
+	private DashBundle()
+	{
+		super("messages.DashBundle");
+	}
+
+	public static String message(@PropertyKey(resourceBundle = "messages.DashBundle") String key)
+	{
+		return ourInstance.getMessage(key);
+	}
+
+	public static String message(@PropertyKey(resourceBundle = "messages.DashBundle") String key, Object... params)
+	{
+		return ourInstance.getMessage(key, params);
+	}
 }

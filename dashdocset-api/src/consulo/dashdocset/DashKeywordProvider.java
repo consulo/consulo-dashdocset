@@ -19,15 +19,26 @@ package consulo.dashdocset;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.Language;
 import com.intellij.psi.PsiFile;
-import consulo.lombok.annotations.ArrayFactoryFields;
+import com.intellij.util.ArrayFactory;
 
 /**
  * @author VISTALL
  * @since 31.12.14
  */
-@ArrayFactoryFields
 public interface DashKeywordProvider
 {
+	public static final DashKeywordProvider[] EMPTY_ARRAY = new DashKeywordProvider[0];
+
+	public static ArrayFactory<DashKeywordProvider> ARRAY_FACTORY = new ArrayFactory<DashKeywordProvider>()
+	{
+		@NotNull
+		@Override
+		public DashKeywordProvider[] create(int count)
+		{
+			return count == 0 ? EMPTY_ARRAY : new DashKeywordProvider[count];
+		}
+	};
+
 	@NotNull
 	String[] findKeywords(@NotNull Language language, @NotNull PsiFile psiFile);
 }
