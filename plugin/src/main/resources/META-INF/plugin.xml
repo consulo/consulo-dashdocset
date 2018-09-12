@@ -24,7 +24,7 @@
 
 	<actions>
 		<action id="SearchInDashDoc" class="consulo.dashdocset.action.SearchInDashDocAction">
-			<add-to-group group-id="EditorPopupMenu"/>
+			<add-to-group group-id="EditorPopupMenu" relative-to-action="$SearchWeb" anchor="after"/>
 		</action>
 	</actions>
 
