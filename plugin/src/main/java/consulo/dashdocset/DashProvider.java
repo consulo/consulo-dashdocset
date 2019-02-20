@@ -16,16 +16,16 @@
 
 package consulo.dashdocset;
 
-import java.awt.Desktop;
 import java.net.URI;
 import java.net.URLEncoder;
 
-import javax.swing.Icon;
+import javax.annotation.Nonnull;
 
-import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.configurations.GeneralCommandLine;
+import com.intellij.ide.BrowserUtil;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.text.StringUtil;
+import consulo.ui.image.Image;
 
 /**
  * @author VISTALL
@@ -37,7 +37,7 @@ public enum DashProvider
 	Zeal(DashIcons.Zeal)
 			{
 				@Override
-				public void open(@NotNull String[] keywords, @NotNull String query) throws Exception
+				public void open(@Nonnull String[] keywords, @Nonnull String query) throws Exception
 				{
 					StringBuilder builder = new StringBuilder();
 					builder.append(StringUtil.join(keywords, ","));
@@ -51,31 +51,28 @@ public enum DashProvider
 			},
 	Velocity(DashIcons.Velocity);
 
-	private final Icon myIcon;
+	private final Image myIcon;
 
-	DashProvider(Icon icon)
+	DashProvider(Image icon)
 	{
 		myIcon = icon;
 	}
 
-	public Icon getIcon()
+	public Image getIcon()
 	{
 		return myIcon;
 	}
 
-	public void open(@NotNull String[] keywords, @NotNull String query) throws Exception
+	public void open(@Nonnull String[] keywords, @Nonnull String query) throws Exception
 	{
 		StringBuilder builder = new StringBuilder("dash-plugin://");
 		builder.append("keys=").append(StringUtil.join(keywords, ","));
 		builder.append("&").append("query=").append(URLEncoder.encode(query, "UTF-8").replace("+", "%20"));
 
-		if(Desktop.isDesktopSupported())
-		{
-			Desktop.getDesktop().browse(new URI(builder.toString()));
-		}
+		BrowserUtil.browse(new URI(builder.toString()));
 	}
 
-	@NotNull
+	@Nonnull
 	public static DashProvider getProvider()
 	{
 		if(SystemInfo.isWindows)

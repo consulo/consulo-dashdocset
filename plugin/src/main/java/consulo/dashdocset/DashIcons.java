@@ -16,9 +16,8 @@
 
 package consulo.dashdocset;
 
-import javax.swing.Icon;
-
 import com.intellij.openapi.util.IconLoader;
+import consulo.ui.image.Image;
 
 /**
  * @author VISTALL
@@ -26,7 +25,7 @@ import com.intellij.openapi.util.IconLoader;
  */
 public interface DashIcons
 {
-	Icon Dash = IconLoader.findIcon("/icons/dash.png");
-	Icon Velocity = IconLoader.findIcon("/icons/velocity.png");
-	Icon Zeal = IconLoader.findIcon("/icons/zeal.png");
+	Image Dash = IconLoader.findIcon("/icons/dash.png");
+	Image Velocity = IconLoader.findIcon("/icons/velocity.png");
+	Image Zeal = IconLoader.findIcon("/icons/zeal.png");
 }

@@ -19,7 +19,7 @@ package consulo.dashdocset;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import consulo.dashdocset.moduleExtension.ModuleExtensionMappingEP;
 import com.intellij.lang.Language;
 import com.intellij.openapi.extensions.ExtensionPointName;
@@ -39,9 +39,9 @@ public class ModuleExtensionDashKeywordProvider implements DashKeywordProvider
 {
 	private static final ExtensionPointName<ModuleExtensionMappingEP> EP_NAME = ExtensionPointName.create("consulo.dashdocset.moduleExtensionMapping");
 
-	@NotNull
+	@Nonnull
 	@Override
-	public String[] findKeywords(@NotNull Language language, @NotNull PsiFile psiFile)
+	public String[] findKeywords(@Nonnull Language language, @Nonnull PsiFile psiFile)
 	{
 		Module moduleForPsiElement = ModuleUtilCore.findModuleForPsiElement(psiFile);
 		if(moduleForPsiElement == null)

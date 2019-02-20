@@ -16,7 +16,7 @@
 
 package consulo.dashdocset;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.lang.Language;
 import com.intellij.psi.PsiFile;
 import com.intellij.util.ArrayFactory;
@@ -31,7 +31,7 @@ public interface DashKeywordProvider
 
 	public static ArrayFactory<DashKeywordProvider> ARRAY_FACTORY = new ArrayFactory<DashKeywordProvider>()
 	{
-		@NotNull
+		@Nonnull
 		@Override
 		public DashKeywordProvider[] create(int count)
 		{
@@ -39,6 +39,6 @@ public interface DashKeywordProvider
 		}
 	};
 
-	@NotNull
-	String[] findKeywords(@NotNull Language language, @NotNull PsiFile psiFile);
+	@Nonnull
+	String[] findKeywords(@Nonnull Language language, @Nonnull PsiFile psiFile);
 }

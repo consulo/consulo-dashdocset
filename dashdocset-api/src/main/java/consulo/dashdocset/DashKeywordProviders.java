@@ -18,7 +18,8 @@ package consulo.dashdocset;
 
 import java.util.List;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.Language;
 import com.intellij.lang.LanguageExtension;
 import com.intellij.util.containers.ContainerUtil;
@@ -36,8 +37,8 @@ public class DashKeywordProviders extends LanguageExtension<DashKeywordProvider>
 		super("consulo.dashdocset.keywordProvider");
 	}
 
-	@NotNull
-	public DashKeywordProvider[] all(@NotNull Language language)
+	@Nonnull
+	public DashKeywordProvider[] all(@Nonnull Language language)
 	{
 		List<DashKeywordProvider> forThisLanguage = allForLanguage(language);
 		List<DashKeywordProvider> forAnyLanguage = allForLanguage(Language.ANY);

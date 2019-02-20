@@ -16,7 +16,7 @@
 
 package consulo.dashdocset.java;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import consulo.dashdocset.DashKeywordProvider;
 import com.intellij.lang.Language;
 import com.intellij.openapi.projectRoots.JavaSdkVersion;
@@ -30,9 +30,9 @@ import com.intellij.util.ArrayUtil;
  */
 public class JavaDashKeywordProvider implements DashKeywordProvider
 {
-	@NotNull
+	@Nonnull
 	@Override
-	public String[] findKeywords(@NotNull Language language, @NotNull PsiFile psiFile)
+	public String[] findKeywords(@Nonnull Language language, @Nonnull PsiFile psiFile)
 	{
 		JavaSdkVersion javaSdkVersion = JavaSdkVersionUtil.getJavaSdkVersion(psiFile);
 		if(javaSdkVersion == null)
