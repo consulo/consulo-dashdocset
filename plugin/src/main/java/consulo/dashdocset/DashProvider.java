@@ -25,6 +25,7 @@ import com.intellij.execution.configurations.GeneralCommandLine;
 import com.intellij.ide.BrowserUtil;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.text.StringUtil;
+import consulo.dashdocset.icon.DashIconGroup;
 import consulo.ui.image.Image;
 
 /**
@@ -33,8 +34,8 @@ import consulo.ui.image.Image;
  */
 public enum DashProvider
 {
-	Dash(DashIcons.Dash),
-	Zeal(DashIcons.Zeal)
+	Dash(DashIconGroup.dash()),
+	Zeal(DashIconGroup.zeal())
 			{
 				@Override
 				public void open(@Nonnull String[] keywords, @Nonnull String query) throws Exception
@@ -49,7 +50,7 @@ public enum DashProvider
 					commandLine.createProcess();
 				}
 			},
-	Velocity(DashIcons.Velocity);
+	Velocity(DashIconGroup.velocity());
 
 	private final Image myIcon;
 
