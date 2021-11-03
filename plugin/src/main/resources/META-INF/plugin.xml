@@ -19,6 +19,9 @@
 	<name>Dash Integration</name>
 	<version>SNAPSHOT</version>
 	<vendor>consulo.io</vendor>
+	<tags>
+		<tag>tools</tag>
+	</tags>
 
 	<depends config-file="consulo.java.xml" optional="true">consulo.java</depends>
 
