@@ -14,7 +14,7 @@
   - limitations under the License.
   -->
 
-<consulo-plugin>
+<consulo-plugin url="https://github.com/consulo/consulo-dashdocset">
 	<id>consulo.dashdocset</id>
 	<name>Dash Integration</name>
 	<version>SNAPSHOT</version>
