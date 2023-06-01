@@ -16,32 +16,40 @@
 
 package consulo.dashdocset.java;
 
-import javax.annotation.Nonnull;
+import com.intellij.java.language.JavaLanguage;
+import com.intellij.java.language.impl.projectRoots.JavaSdkVersionUtil;
+import com.intellij.java.language.projectRoots.JavaSdkVersion;
+import consulo.annotation.access.RequiredReadAction;
+import consulo.annotation.component.ExtensionImpl;
 import consulo.dashdocset.DashKeywordProvider;
-import com.intellij.lang.Language;
-import com.intellij.openapi.projectRoots.JavaSdkVersion;
-import com.intellij.openapi.projectRoots.JavaSdkVersionUtil;
-import com.intellij.psi.PsiFile;
-import com.intellij.util.ArrayUtil;
+import consulo.language.Language;
+import consulo.language.psi.PsiFile;
+import jakarta.annotation.Nonnull;
+
+import java.util.function.Consumer;
 
 /**
  * @author VISTALL
  * @since 31.12.14
  */
-public class JavaDashKeywordProvider implements DashKeywordProvider
-{
-	@Nonnull
-	@Override
-	public String[] findKeywords(@Nonnull Language language, @Nonnull PsiFile psiFile)
-	{
-		JavaSdkVersion javaSdkVersion = JavaSdkVersionUtil.getJavaSdkVersion(psiFile);
-		if(javaSdkVersion == null)
-		{
-			return ArrayUtil.EMPTY_STRING_ARRAY;
-		}
-		// JDK_1_X
-		String name = javaSdkVersion.name();
-		String index = name.substring(6, name.length());
-		return new String[] {"java" + index};
-	}
+@ExtensionImpl
+public class JavaDashKeywordProvider implements DashKeywordProvider {
+    @RequiredReadAction
+    @Override
+    public void findKeywords(@Nonnull Language language, @Nonnull PsiFile psiFile, @Nonnull Consumer<String> consumer) {
+        JavaSdkVersion javaSdkVersion = JavaSdkVersionUtil.getJavaSdkVersion(psiFile);
+        if (javaSdkVersion == null) {
+            return;
+        }
+        // JDK_1_X
+        String name = javaSdkVersion.name();
+        String index = name.substring(6, name.length());
+        consumer.accept("java" + index);
+    }
+
+    @Nonnull
+    @Override
+    public Language getLanguage() {
+        return JavaLanguage.INSTANCE;
+    }
 }

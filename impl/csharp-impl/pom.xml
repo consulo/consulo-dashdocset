@@ -25,7 +25,7 @@
     </parent>
 
     <groupId>consulo.plugin</groupId>
-    <artifactId>consulo.dashdocset-java.impl</artifactId>
+    <artifactId>consulo.dashdocset-csharp.impl</artifactId>
     <version>3-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -48,7 +48,13 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>consulo.java</artifactId>
+            <artifactId>consulo.csharp</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>consulo.dotnet</artifactId>
             <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>

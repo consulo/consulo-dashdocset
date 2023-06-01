@@ -23,27 +23,6 @@
 		<tag>tools</tag>
 	</tags>
 
-	<depends config-file="consulo.java.xml" optional="true">consulo.java</depends>
-
-	<actions>
-		<action id="SearchInDashDoc" class="consulo.dashdocset.action.SearchInDashDocAction">
-			<add-to-group group-id="EditorPopupMenu" relative-to-action="$SearchWeb" anchor="after"/>
-		</action>
-	</actions>
-
-	<extensionPoints>
-		<extensionPoint name="moduleExtensionMapping" beanClass="consulo.dashdocset.moduleExtension.ModuleExtensionMappingEP"/>
-
-		<extensionPoint name="keywordProvider" beanClass="com.intellij.lang.LanguageExtensionPoint" >
-			<with attribute="implementationClass" implements="consulo.dashdocset.DashKeywordProvider"/>
-		</extensionPoint>
-	</extensionPoints>
-
-	<extensions defaultExtensionNs="consulo.dashdocset">
-		<keywordProvider language="" implementationClass="consulo.dashdocset.ModuleExtensionDashKeywordProvider" />
-
-		<moduleExtensionMapping language="C#" moduleExtensionId="mono-dotnet" keyword="mono" />
-		<moduleExtensionMapping language="C#" moduleExtensionId="microsoft-dotnet" keyword="dotnet" />
-		<moduleExtensionMapping language="C#" moduleExtensionId="unity3d-csharp-child" keyword="unity3d" />
-	</extensions>
+	<depends optional="true">consulo.java</depends>
+	<depends optional="true">consulo.csharp</depends>
 </consulo-plugin>

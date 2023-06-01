@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package consulo.dashdocset;
+package consulo.dashdocset.impl;
 
+import consulo.component.util.localize.AbstractBundle;
 import org.jetbrains.annotations.PropertyKey;
-import com.intellij.AbstractBundle;
 
 /**
  * @author VISTALL
