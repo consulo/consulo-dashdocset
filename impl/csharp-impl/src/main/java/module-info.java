@@ -5,6 +5,9 @@
 module consulo.dashdocset.csharp.impl {
     requires consulo.dashdocset.api;
 
+    requires consulo.language.api;
+    requires consulo.module.api;
+
     requires consulo.dotnet.api;
     requires consulo.dotnet.psi.api;
     requires consulo.csharp.csharp.psi.api;

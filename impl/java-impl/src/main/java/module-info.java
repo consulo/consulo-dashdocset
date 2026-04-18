@@ -5,6 +5,8 @@
 module consulo.dashdocset.java.impl {
     requires consulo.dashdocset.api;
 
+    requires consulo.language.api;
+
     requires consulo.java.language.api;
     requires consulo.java.language.impl;
 }
