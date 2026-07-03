@@ -36,10 +36,14 @@ import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiFile;
 import consulo.logging.Logger;
 import consulo.project.Project;
+import consulo.ui.annotation.RequiredUIAccess;
 import consulo.ui.ex.action.AnAction;
 import consulo.ui.ex.action.AnActionEvent;
+import consulo.ui.ex.action.AnActionWithAsyncUpdate;
 import consulo.ui.ex.action.Presentation;
+import consulo.ui.ex.action.coroutine.ActionSafeReadLock;
 import consulo.util.collection.ArrayUtil;
+import consulo.util.concurrent.coroutine.Coroutine;
 import consulo.util.lang.Pair;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
@@ -52,7 +56,7 @@ import java.util.List;
  * @since 31.12.14
  */
 @ActionImpl(id = "SearchInDashDoc", parents = @ActionParentRef(value = @ActionRef(id = "EditorPopupMenu"), anchor = ActionRefAnchor.AFTER, relatedToAction = @ActionRef(id = "$SearchWeb")))
-public class SearchInDashDocAction extends AnAction {
+public class SearchInDashDocAction extends AnAction implements AnActionWithAsyncUpdate {
     private static final Logger LOGGER = Logger.getInstance(SearchInDashDocAction.class);
 
     public SearchInDashDocAction() {
@@ -61,6 +65,7 @@ public class SearchInDashDocAction extends AnAction {
         getTemplatePresentation().setIcon(provider.getIcon());
     }
 
+    @RequiredUIAccess
     @Override
     public void actionPerformed(AnActionEvent anActionEvent) {
         Pair<String, String[]> queryInfo = findQueryInfo(anActionEvent);
@@ -174,9 +179,9 @@ public class SearchInDashDocAction extends AnAction {
     }
 
     @Override
-    public void update(AnActionEvent e) {
-        Presentation presentation = e.getPresentation();
-
-        presentation.setEnabledAndVisible(findQueryInfo(e) != null);
+    public Coroutine<?, ?> updateAsync(AnActionEvent e) {
+        return ActionSafeReadLock.run(e, presentation -> {
+            presentation.setEnabledAndVisible(findQueryInfo(e) != null);
+        }).toCoroutine();
     }
 }
