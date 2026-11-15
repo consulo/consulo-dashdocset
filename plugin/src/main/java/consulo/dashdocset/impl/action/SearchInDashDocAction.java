@@ -21,6 +21,7 @@ import consulo.annotation.component.ActionImpl;
 import consulo.annotation.component.ActionParentRef;
 import consulo.annotation.component.ActionRef;
 import consulo.annotation.component.ActionRefAnchor;
+import consulo.application.Application;
 import consulo.application.progress.ProgressIndicator;
 import consulo.application.progress.Task;
 import consulo.codeEditor.Editor;
@@ -181,6 +182,10 @@ public class SearchInDashDocAction extends AnAction implements AnActionWithAsync
     @Override
     public Coroutine<?, ?> updateAsync(AnActionEvent e) {
         return ActionSafeReadLock.run(e, presentation -> {
+            // without an editor there is no query, without a keyword provider no keywords
+            presentation.setEnabledAndVisible(e.getData(Editor.KEY) != null
+                && Application.get().getExtensionPoint(DashKeywordProvider.class).hasAnyExtensions());
+        }, presentation -> {
             presentation.setEnabledAndVisible(findQueryInfo(e) != null);
         }).toCoroutine();
     }
